@@ -3,16 +3,16 @@ import { useEffect, useRef, useState } from "react";
 // ---- CONTACT DETAILS (placeholders) --------------------------------------
 // Fill these in. Empty ("") shows a muted "(placeholder)" row that is not a link.
 const CONTACT = {
-  email: "", // e.g. yourname@example.com
-  whatsapp: "", // number with country code, e.g. +91 98765 43210
-  github: "", // full URL, e.g. https://github.com/your-username
-  linkedin: "", // full URL, e.g. https://www.linkedin.com/in/your-profile
+  email: "ajaysaini2301@gmail.com",
+  whatsapp: "+91 7014015155",
+  github: "	https://github.com/ajaysaini2301-cloud",
+  linkedin: "https://www.linkedin.com/in/ajay-kumar-saini-a85728300/"
 };
 
 // ---- FORM BACKEND --------------------------------------------------------
 // Leave empty until you have a backend. Then paste its URL here; the form will
 // POST { name, email, subject, message } as JSON to it.
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "http://127.0.0.1:5000/api/contact";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -195,63 +195,80 @@ function Contact() {
     if (status) setStatus(null);
   };
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (isSending) return;
 
+    // Step 1: Validate form data
     const foundErrors = validate(values);
     setErrors(foundErrors);
 
     const firstInvalid = Object.keys(foundErrors)[0];
+
     if (firstInvalid) {
       setStatus({
         type: "error",
         text: "Please fix the highlighted fields and try again.",
       });
+
       document.getElementById(`contact-${firstInvalid}`)?.focus();
       return;
     }
 
-    // No backend connected yet: be honest, do not pretend the message was sent
-    if (!FORM_ENDPOINT) {
-      setStatus({
-        type: "info",
-        text: "Your details look good, but this form isn’t connected to a backend yet, so nothing was sent. Please use the contact details on the left for now.",
-      });
-      return;
-    }
-
+    // Step 2: Start loading
     setIsSending(true);
     setStatus(null);
 
     try {
+      // Step 3: Send data to Flask API
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          name: values.name.trim(),
+          full_name: values.name.trim(),
           email: values.email.trim(),
           subject: values.subject.trim(),
           message: values.message.trim(),
         }),
       });
 
-      if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+      // Step 4: Read API response
+      const result = await response.json();
 
+      // Step 5: Handle API errors
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Unable to send your message."
+        );
+      }
+
+      // Step 6: Success
       setValues(INITIAL_VALUES);
+      setErrors({});
+
       setStatus({
         type: "success",
-        text: "Thank you! Your message has been sent.",
+        text: "Thank you! Your message has been sent successfully.",
       });
+
     } catch (error) {
+      console.error("Contact form error:", error);
+
       setStatus({
         type: "error",
-        text: "Something went wrong and your message wasn’t sent. Please try again later.",
+        text: error.message || "Something went wrong. Please try again later.",
       });
+
     } finally {
+      // Step 7: Stop loading
       setIsSending(false);
     }
   };
+
 
   return (
     <>

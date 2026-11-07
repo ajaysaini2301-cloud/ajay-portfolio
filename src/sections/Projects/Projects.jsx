@@ -23,7 +23,7 @@ const PROJECTS = [
       "A simple, responsive task manager for adding, completing and organizing everyday tasks.",
     tech: ["React.js", "JavaScript", "CSS"],
     liveUrl: "",
-    githubUrl: "",
+    githubUrl: "https://github.com/ajaysaini2301-cloud/todo-app",
     image: null,
   },
   {
@@ -31,8 +31,8 @@ const PROJECTS = [
     description:
       "An interactive typing test that helps users practice and check their typing skills in the browser.",
     tech: ["JavaScript", "HTML", "CSS"],
-    liveUrl: "",
-    githubUrl: "",
+    liveUrl: "https://typing-test-7iiy.vercel.app/",
+    githubUrl: "https://github.com/ajaysaini2301-cloud/typing-test",
     image: null,
   },
   {
