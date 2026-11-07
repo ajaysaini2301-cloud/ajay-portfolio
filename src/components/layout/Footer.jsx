@@ -1,5 +1,5 @@
 // ---- FOOTER DETAILS (placeholders) ---------------------------------------
-// Fill these in. Empty ("") shows a muted "(placeholder)" item that is not a link.
+// Fill these in. Empty ("") shows a muted      "(placeholder)" item that is not a link.
 const FOOTER_CONTACT = {
   email: "", // e.g. yourname@example.com
   github: "https://github.com/ajaysaini2301-cloud",
