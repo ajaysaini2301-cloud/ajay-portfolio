@@ -2,8 +2,8 @@
 // Fill these in. Empty ("") shows a muted "(placeholder)" item that is not a link.
 const FOOTER_CONTACT = {
   email: "", // e.g. yourname@example.com
-  github: "", // full URL, e.g. https://github.com/your-username
-  linkedin: "", // full URL, e.g. https://www.linkedin.com/in/your-profile
+  github: "https://github.com/ajaysaini2301-cloud",
+  linkedin: "https://www.linkedin.com/in/ajay-kumar-saini-a85728300/", // full URL, e.g. https://www.linkedin.com/in/your-profile
 };
 
 const QUICK_LINKS = [
@@ -407,7 +407,7 @@ function Footer() {
               ) : (
                 <p className="footer__email footer__email--empty">
                   {mailIcon}
-                  Your email address (placeholder)
+                  ajaysaini2301@gmail.com
                 </p>
               )}
 
