@@ -22,7 +22,7 @@ const PROJECTS = [
     description:
       "A simple, responsive task manager for adding, completing and organizing everyday tasks.",
     tech: ["React.js", "JavaScript", "CSS"],
-    liveUrl: "",
+    liveUrl: "https://todo-app-blond-nine-63.vercel.app",
     githubUrl: "https://github.com/ajaysaini2301-cloud/todo-app",
     image: null,
   },
