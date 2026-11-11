@@ -23,5 +23,7 @@ def create_app():
 
     # Register contact blueprint
     app.register_blueprint(contact_bp)
-
+    @app.route("/api/health")
+    def health():
+        return {"status": "ok"}
     return app
