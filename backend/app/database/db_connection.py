@@ -20,7 +20,7 @@ def get_db_connection():
 
         if database_url:
             # Neon Cloud Database
-            connection = psycopg2.connect(database_url)
+            connection = psycopg2.connect(database_url, connect_timeout=10)
         else:
             # Local PostgreSQL Database
             connection = psycopg2.connect(
