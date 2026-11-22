@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 // 1. Save it as src/assets/profile.jpg
 // 2. Uncomment the import below
 // 3. Replace the PROFILE_IMAGE line with: const PROFILE_IMAGE = profileImg;
-// import profileImg from "../../assets/profile.jpg";
+import profileImg from "../../assets/profile.jpg";
 
 const PLACEHOLDER_SVG = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480">
@@ -14,9 +14,7 @@ const PLACEHOLDER_SVG = `
   <path d="M60 480c0-96 62-160 140-160s140 64 140 160z" fill="#D4D4D8"/>
 </svg>`;
 
-const PROFILE_IMAGE = `data:image/svg+xml;utf8,${encodeURIComponent(
-  PLACEHOLDER_SVG
-)}`;
+const PROFILE_IMAGE = profileImg;
 
 const TECHNOLOGIES = [
   "Python",
@@ -484,7 +482,7 @@ function Home() {
             <p className="hero__eyebrow">Hello, I&apos;m</p>
 
             <h1 id="hero-heading" className="hero__name">
-              Ajay Saini
+              Ajay Kumar Saini
             </h1>
 
             <p className="hero__role">Backend Developer</p>
